@@ -1,75 +1,43 @@
 {
-    "name": "laravel/laravel",
-    "type": "project",
-    "description": "The Laravel Framework.",
-    "keywords": [
-        "framework",
-        "laravel"
-    ],
+    "name": "evidenceekanem/laraveltodolist",
+    "description": ":description",
     "license": "MIT",
+    "authors": [
+        {
+            "name": "evidenceekanem",
+            "email": "ekanemevidence@gmail.com",
+            "homepage": "author homepage"
+        }
+    ],
+    "homepage": "https://github.com/evidenceekanem/laraveltodolist",
+    "keywords": ["Laravel", "laravelTodoList"],
     "require": {
-        "php": "^7.1.3",
-        "fideloper/proxy": "^4.0",
-        "jeroen-g/laravel-packager": "^2.1",
-        "laravel/framework": "5.8.*",
-        "laravel/tinker": "^1.0",
-        "evidenceekanem/laravelTodoList": "~1.0-dev"
+        "illuminate/support": "~5"
     },
     "require-dev": {
-        "beyondcode/laravel-dump-server": "^1.0",
-        "filp/whoops": "^2.0",
-        "fzaninotto/faker": "^1.4",
-        "mockery/mockery": "^1.0",
-        "nunomaduro/collision": "^2.0",
-        "phpunit/phpunit": "^7.5"
-    },
-    "repositories": {
-        "package-name": {
-            "type": "path",
-            "url": "packages/evidenceekanem/laravelTodoList",
-            "options": {
-                "symlink": true
-            }
-        }
-    },
-    "config": {
-        "optimize-autoloader": true,
-        "preferred-install": "dist",
-        "sort-packages": true
-    },
-    "extra": {
-        "laravel": {
-            "dont-discover": []
-        }
+        "phpunit/phpunit": "~7.0",
+        "mockery/mockery": "^1.1",
+        "orchestra/testbench": "~3.0",
+        "sempro/phpunit-pretty-print": "^1.0"
     },
     "autoload": {
         "psr-4": {
-            "evidenceekanem\\laravelTodoList\\": "packages/evidenceekanem/laravelTodoList/src",
-            "App\\": "app/"
-        },
-        "classmap": [
-            "database/seeds",
-            "database/factories"
-        ]
+            "evidenceekanem\\laravelTodoList\\": "src/"
+        }
     },
     "autoload-dev": {
         "psr-4": {
-            "evidenceekanem\\laravelTodoList\\": "packages/evidenceekanem/laravelTodoList/src",
-            "Tests\\": "tests/"
+            "evidenceekanem\\laravelTodoList\\Tests\\": "tests"
         }
     },
-    "minimum-stability": "dev",
-    "prefer-stable": true,
-    "scripts": {
-        "post-autoload-dump": [
-            "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
-            "@php artisan package:discover --ansi"
-        ],
-        "post-root-package-install": [
-            "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
-        ],
-        "post-create-project-cmd": [
-            "@php artisan key:generate --ansi"
-        ]
+    "extra": {
+        "laravel": {
+            "providers": [
+                "evidenceekanem\\laravelTodoList\\laravelTodoListServiceProvider"
+            ],
+            "aliases": {
+                "laravelTodoList": "evidenceekanem\\laravelTodoList\\Facades\\laravelTodoList"
+            }
+        }
     }
 }
