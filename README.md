@@ -5,7 +5,7 @@
 [![Build Status][ico-travis]][link-travis]
 [![StyleCI][ico-styleci]][link-styleci]
 
-This is a Laravel package that adds task management functionality to an app.
+This is a Laravel package that handles your todo list.
 
 ## Installation
 
