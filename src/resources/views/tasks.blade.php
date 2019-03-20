@@ -58,6 +58,11 @@
                                                     <span class="badge badge-info text-white rounded-circle">
                                                         {{count($category->tasks)}}
                                                     </span>
+                                                    <br>
+                                                    <small class="text-secondary">
+                                                        Created on
+                                                        {{ ($category->created_at->toFormattedDateString()) }}
+                                                    </small>
                                                 </a>
                                             </td>
                                             <td>
@@ -116,7 +121,12 @@
                         @foreach($tasks as $task)
                         <tr>
                             <td>
-                                <span class="float-left">@if($task->completed==true) <del>{{$task->name}}</del> @else {{ $task->name }} @endif</span>
+                                <span class="float-left">@if($task->completed==true) <del>{{$task->name}}</del> @else {{ $task->name }} @endif </span>
+                                <br>
+                                <small class="text-secondary float-left">
+                                    Created
+                                    {{ ($task->created_at->diffForHumans()) }}
+                                </small>
                             </td>
 
                             <td>
