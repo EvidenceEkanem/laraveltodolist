@@ -19,18 +19,28 @@ $ composer require evidenceekanem/laraveltodolist
 
 You need to run migrations to create necessary tables
 
+```bash
 php artisan migrate"
+```
+
 You can publish the configuration file using this command:
 
+```bash
 php artisan vendor:publish --tag=public
-Then you are ready to get runnings. Just visit
+```
 
+Then you are ready to get runnings. Just visit 
+
+```bash
 http://{{site-url}}/tasks
+```
+
 Add task categories and tasks. Enjoy.
 
-Developed by
+Developed by 
 
-Evidence Ekanem @evidenceekanem
+Evidence Ekanem
+@evidenceetinih
 
 ## Change log
 
