@@ -12,7 +12,7 @@ This is where your description should go. Take a look at [contributing.md](contr
 Via Composer
 
 ``` bash
-$ composer require evidenceekanem/laraveltodolist
+composer require evidenceekanem/laraveltodolist
 ```
 
 ## Usage
@@ -20,7 +20,7 @@ $ composer require evidenceekanem/laraveltodolist
 You need to run migrations to create necessary tables
 
 ```bash
-php artisan migrate"
+php artisan migrate
 ```
 
 You can publish the configuration file using this command:
