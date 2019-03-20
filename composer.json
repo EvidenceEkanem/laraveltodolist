@@ -1,6 +1,6 @@
 {
     "name": "evidenceekanem/laraveltodolist",
-    "description": ":A Laravel package that adds task management functionality to an app",
+    "description": ":This is a Laravel package that adds task management functionality to an app",
     "license": "MIT",
     "authors": [
         {
