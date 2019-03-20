@@ -13,7 +13,6 @@ class laravelTodoListServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        // $this->loadTranslationsFrom(__DIR__.'/../resources/lang', 'evidenceekanem');
         $this->loadViewsFrom(__DIR__.'/resources/views', 'laraveltodolist');
         $this->loadMigrationsFrom(__DIR__.'/database/migrations');
         $this->loadRoutesFrom(__DIR__.'/routes/web.php');
@@ -31,8 +30,6 @@ class laravelTodoListServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        // $this->mergeConfigFrom(__DIR__.'/config/laraveltodolist.php', 'laraveltodolist');
-
         // Register the service the package provides.
         $this->app->singleton('laraveltodolist', function ($app) {
             return new laravelTodoList;
@@ -56,10 +53,6 @@ class laravelTodoListServiceProvider extends ServiceProvider
      */
     protected function bootForConsole()
     {
-        // Publishing the configuration file.
-        // $this->publishes([
-        //     __DIR__.'/config/laraveltodolist.php' => config_path('laraveltodolist.php'),
-        // ], 'laraveltodolist.config');
         
         // Publishing the views.
         $this->publishes([
@@ -74,13 +67,5 @@ class laravelTodoListServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__.'/database/migrations/' => database_path('migrations')
         ], 'migrations');
-
-        // Publishing the translation files.
-        // $this->publishes([
-        //     __DIR__.'/resources/lang' => resource_path('vendor/laraveltodolist'),
-        // ], 'laraveltodolist.views');
-
-        // Registering package commands.
-        // $this->commands([]);
     }
 }

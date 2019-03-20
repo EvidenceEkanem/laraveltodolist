@@ -9,11 +9,17 @@ This is where your description should go. Take a look at [contributing.md](contr
 
 ## Installation
 
-Via Composer
+[PHP](https://php.net) 5.5+ or [HHVM](http://hhvm.com) 3.3+, and [Composer](https://getcomposer.org) are required.
+
+To get the latest version of laraveltodolist, simply run
 
 ``` bash
 composer require evidenceekanem/laraveltodolist
 ```
+
+You'll then need to run `composer install` or `composer update` to download it and have the autoloader updated.
+
+If you are using Laravel for the first time and the key is not generated yet, run `php artisan key:generate`. 
 
 ## Usage
 
