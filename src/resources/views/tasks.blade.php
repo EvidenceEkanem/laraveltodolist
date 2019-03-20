@@ -116,7 +116,7 @@
                         @foreach($tasks as $task)
                         <tr>
                             <td>
-                                <span class="pl-3 float-left">@if($task->completed==true) <del>{{$task->name}}</del> @else {{ $task->name }} @endif</span>
+                                <span class="float-left">@if($task->completed==true) <del>{{$task->name}}</del> @else {{ $task->name }} @endif</span>
                             </td>
 
                             <td>
