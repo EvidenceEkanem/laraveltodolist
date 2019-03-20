@@ -63,12 +63,12 @@ class laravelTodoListServiceProvider extends ServiceProvider
         
         // Publishing the views.
         $this->publishes([
-            __DIR__.'/resources/views' => base_path('evidenceekanem/laraveltodolist'),
+            __DIR__.'/resources/views' => base_path('vendor/laravelTodoList'),
         ], 'views');
 
         // Publishing assets.
         $this->publishes([
-            __DIR__.'/assets' => public_path('evidenceekanem/laraveltodolist'),
+            __DIR__.'/assets' => public_path('vendor/laravelTodoList'),
         ], 'public');
 
         $this->publishes([
