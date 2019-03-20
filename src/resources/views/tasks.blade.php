@@ -1,4 +1,4 @@
-@extends('evidenceekanem.laravelTodList.layouts.layout')
+@extends('laraveltodolist::layouts.layout')
 
 @section('content')
 <div class="container">
@@ -12,9 +12,9 @@
 							<form action="{{ route('categories.store') }}" method="post">
                             {{ csrf_field() }}
 								<div class="input-group mb-3">
-									<input type="text" name="categories" class="form-control" placeholder="New Category">
+									<input type="text" required name="categories" class="form-control" placeholder="New Category">
 									<div class="input-group-append">
-                                    <button type="submit" class="btn btn-primary"><i class="fas fa-plus mr-1"></i>Add Category</button>
+                                    <button type="submit" class="btn btn-info text-white"><i class="fas fa-plus mr-1"></i>Add Category</button>
 									</div>
 								</div>
                             </form>
@@ -34,13 +34,13 @@
                                     @csrf
                                     <div class="form-group">
                                     <label for="description">Categories</label>
-                                    <input type="text" value="" class="form-control" name="categories" id="categoryName">
+                                    <input type="text" value="" class="form-control" name="categories" id="category">
                                 </div>
                             </div>
 
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <button type="submit" class="btn btn-primary">Update changes</button>
+                                <button type="submit" class="btn btn-info text-white">Update changes</button>
                             </div>
                         </form>
                             </div>
@@ -54,12 +54,12 @@
                                             <td>
                                                 <a class="text-dark" href="{{ route('tasks.index') }}?category={{ $category->id }}">{{$category->categories}}</a>
                                                 
-                                                <span class="badge badge-primary rounded-circle">
+                                                <span class="badge badge-info text-white rounded-circle">
                                                     {{count($category->tasks)}}
                                                 </span>
                                             </td>
                                             <td>
-                                                <button class="btn btn-primary btn-sm" data-categories-id="{{$category->id}}" data-categories-name="{{$category->categories}}" data-toggle="modal" data-target="#categoriesModal"><i class="fas fa-pencil-alt"></i></button>
+                                                <button class="btn btn-info text-white btn-sm" data-categories-id="{{$category->id}}" data-categories-category="{{$category->categories}}" data-toggle="modal" data-target="#categoriesModal"><i class="fas fa-pencil-alt"></i></button>
                                             </td>
                                             <td class="float-right">
                                                 <form class="ml-3 d-inline" action="{{ route('categories.delete', [$category->id])}}" method="post">
@@ -98,7 +98,7 @@
                             <form action="{{ route('tasks.store') }}" method="post">
                                 @csrf
 								<div class="input-group mb-3">
-                                    <input type="text" name="name" class="form-control" placeholder="New task">
+                                    <input type="text" required name="name" class="form-control" placeholder="New task">
                                     <input type="hidden" name="category_id" value="{{ $current_cat->id ?? null }}">
 									<div class="input-group-append">
 										<button class="btn btn-danger" type="submit"><i class="fas fa-plus mr-1"></i>Add Task</button>
@@ -128,7 +128,7 @@
 
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-primary">Update changes</button>
+                            <button type="submit" class="btn btn-info text-white">Update changes</button>
                         </div>
                     </form>
                         </div>
@@ -148,7 +148,7 @@
                             </td>
 
                             <td>
-                                <button class="btn btn-primary btn-sm" data-task-id="{{$task->id}}" data-task-name="{{$task->name}}" data-toggle="modal" data-target="#taskModal"><i class="fas fa-pencil-alt"></i></button>
+                                <button class="btn btn-info text-white btn-sm" data-task-id="{{$task->id}}" data-task-name="{{$task->name}}" data-toggle="modal" data-target="#taskModal"><i class="fas fa-pencil-alt"></i></button>
                             </td>
 
                             <td>
@@ -175,6 +175,16 @@
 <script src="{{ (asset('vendor/laravelTodoList/js/axios/axios.min.js')) }}"></script>
 
 <script>
+    var url = "{{ route('tasks.update')}}"
+    $("#taskModal").on('show.bs.modal', function(event){
+        var btn = event.relatedTarget;
+        var id = $(btn).data('task-id');
+        var taskName = $(btn).data('task-name');
+        $("#taskName").val(taskName);
+
+        $("#task-up").attr('action', url+'/'+id)
+    })
+    
 function changestatus(task_id)
 {
     var form = new FormData;
@@ -188,27 +198,15 @@ function changestatus(task_id)
         console.log(error.response.data);
     })
 }
+    var url = "{{ route('categories.update')}}"
+    $("#categoriesModal").on('show.bs.modal', function(event){
+        var btn = event.relatedTarget;
+        var id = $(btn).data('categories-id');
+        var categories = $(btn).data('categories-category');
+        $("#category").val(categories);
 
-        var url = "{{ route('categories.update')}}"
-        
-        $("#categoriesModal").on('show.bs.modal', function(event){
-            var btn = event.relatedTarget;
-            var id = $(btn).data('categories-id');
-            var categoriesName = $(btn).data('categories-name');
-            $("#categoryName").val(categoriesName);
+        $("#categories-update").attr('action', url+'/'+id)
+    })
 
-            $("#categories-update").attr('action', url+'/'+id)
-        })
-
-        var url = "{{ route('tasks.update')}}"
-        
-        $("#taskModal").on('show.bs.modal', function(event){
-            var btn = event.relatedTarget;
-            var id = $(btn).data('task-id');
-            var taskName = $(btn).data('task-name');
-            $("#taskName").val(taskName);
-
-            $("#task-update").attr('action', url+'/'+id)
-        })
 </script>
 @endsection

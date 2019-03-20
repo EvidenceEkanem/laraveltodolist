@@ -12,7 +12,7 @@
 <body>
         <div class="bg section-height">
             <div class="container">
-                <h1 class="py-5">Laravel Todo List</h1>
+                <h1 class="py-5 font-weight-bold text-white">Laravel Todo List</h1>
             </div>
             @yield('content')
         </div>

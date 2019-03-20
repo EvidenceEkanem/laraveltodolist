@@ -14,8 +14,8 @@ class laravelTodoListServiceProvider extends ServiceProvider
     public function boot()
     {
         // $this->loadTranslationsFrom(__DIR__.'/../resources/lang', 'evidenceekanem');
-        $this->loadViewsFrom(__DIR__.'/../resources/views', 'evidenceekanem');
-        $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
+        $this->loadViewsFrom(__DIR__.'/resources/views', 'laraveltodolist');
+        $this->loadMigrationsFrom(__DIR__.'/database/migrations');
         $this->loadRoutesFrom(__DIR__.'/routes/web.php');
 
         // Publishing is only necessary when using the CLI.
@@ -31,7 +31,7 @@ class laravelTodoListServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->mergeConfigFrom(__DIR__.'/../config/laraveltodolist.php', 'laraveltodolist');
+        // $this->mergeConfigFrom(__DIR__.'/config/laraveltodolist.php', 'laraveltodolist');
 
         // Register the service the package provides.
         $this->app->singleton('laraveltodolist', function ($app) {
@@ -57,30 +57,30 @@ class laravelTodoListServiceProvider extends ServiceProvider
     protected function bootForConsole()
     {
         // Publishing the configuration file.
-        $this->publishes([
-            __DIR__.'/../config/laraveltodolist.php' => config_path('laraveltodolist.php'),
-        ], 'laraveltodolist.config');
+        // $this->publishes([
+        //     __DIR__.'/config/laraveltodolist.php' => config_path('laraveltodolist.php'),
+        // ], 'laraveltodolist.config');
         
         // Publishing the views.
         $this->publishes([
-            __DIR__.'/../resources/views' => base_path('resources/views/vendor/evidenceekanem'),
-        ], 'laraveltodolist.views');
+            __DIR__.'/resources/views' => base_path('evidenceekanem/laraveltodolist'),
+        ], 'views');
 
         // Publishing assets.
         $this->publishes([
-            __DIR__.'/../resources/assets' => public_path('resources/assets/vendor/evidenceekanem'),
-        ], 'laraveltodolist.views');
+            __DIR__.'/assets' => public_path('evidenceekanem/laraveltodolist'),
+        ], 'public');
 
         $this->publishes([
-            __DIR__.'/../Database/migrations/' => database_path('migrations')
+            __DIR__.'/database/migrations/' => database_path('migrations')
         ], 'migrations');
 
         // Publishing the translation files.
-        $this->publishes([
-            __DIR__.'/../resources/lang' => resource_path('lang/vendor/evidenceekanem'),
-        ], 'laraveltodolist.views');
+        // $this->publishes([
+        //     __DIR__.'/resources/lang' => resource_path('vendor/laraveltodolist'),
+        // ], 'laraveltodolist.views');
 
         // Registering package commands.
-        $this->commands([]);
+        // $this->commands([]);
     }
 }

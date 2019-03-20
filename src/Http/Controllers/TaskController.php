@@ -17,7 +17,7 @@ class TaskController extends Controller
             $currentCat = Category::where('id', $currentCat)->first();
             $tasksForCurrentCat = $currentCat->tasks ?? null;
         }
-        return view('tasks', ['categories' => $categories, 'tasks' => $tasksForCurrentCat ?? null, 'current_cat' => $currentCat ?? null]);
+        return view('laraveltodolist::tasks', ['categories' => $categories, 'tasks' => $tasksForCurrentCat ?? null, 'current_cat' => $currentCat ?? null]);
     }
 
    
@@ -41,11 +41,10 @@ class TaskController extends Controller
         return back();
     }
    
-    public function updateCat(Request $request, $id)
+    public function updateCategories(Request $request, $id)
     {
-        $categories = Category::findOrFail($id);
+        $categories = Category::find($id);
         $categories->categories = $request->categories;
-        
         $categories->save();
 
         return back();
@@ -53,7 +52,7 @@ class TaskController extends Controller
 
     public function updateTask(Request $request, $id)
     {
-        $tasks = Task::findOrFail($id);
+        $tasks = Task::find($id);
         $tasks->name = $request->tasks;
         $tasks->save();
 
