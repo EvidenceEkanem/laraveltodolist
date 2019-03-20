@@ -45,6 +45,7 @@ class TaskController extends Controller
     {
         $categories = Category::find($id);
         $categories->categories = $request->categories;
+        
         $categories->save();
 
         return back();
@@ -52,6 +53,7 @@ class TaskController extends Controller
 
     public function updateTask(Request $request, $id)
     {
+        // dd($request->post());
         $tasks = Task::find($id);
         $tasks->name = $request->tasks;
         $tasks->save();

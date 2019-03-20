@@ -23,7 +23,7 @@
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title">Edit Categories</h5>
+                                <h5 class="modal-title">Task Category</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                                 </button>
@@ -32,6 +32,7 @@
                             <div class="modal-body">
                                 <form action="" method="post" id="categories-update">
                                     @csrf
+                                    @method('put')
                                     <div class="form-group">
                                     <label for="description">Categories</label>
                                     <input type="text" value="" class="form-control" name="categories" id="category">
@@ -52,11 +53,12 @@
                                     @foreach($categories as $category)
                                         <tr>
                                             <td>
-                                                <a class="text-dark" href="{{ route('tasks.index') }}?category={{ $category->id }}">{{$category->categories}}</a>
+                                                <a class="text-dark" href="{{ route('tasks.index') }}?category={{ $category->id }}">{{$category->categories}}
                                                 
-                                                <span class="badge badge-info text-white rounded-circle">
-                                                    {{count($category->tasks)}}
-                                                </span>
+                                                    <span class="badge badge-info text-white rounded-circle">
+                                                        {{count($category->tasks)}}
+                                                    </span>
+                                                </a>
                                             </td>
                                             <td>
                                                 <button class="btn btn-info text-white btn-sm" data-categories-id="{{$category->id}}" data-categories-category="{{$category->categories}}" data-toggle="modal" data-target="#categoriesModal"><i class="fas fa-pencil-alt"></i></button>
@@ -107,33 +109,7 @@
 							</form>
                         </div>
                         
-                <div class="modal fade" id="taskModal" tabindex="-1" role="dialog" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title">Edit tasks</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-
-                        <div class="modal-body">
-                            <form action="" method="post" id="task-update">
-                                @csrf
-                                <div class="form-group">
-                                <label for="description">tasks</label>
-                                <input type="text" value="" class="form-control" name="tasks" id="taskName">
-                            </div>
-                        </div>
-
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-info text-white">Update changes</button>
-                        </div>
-                    </form>
-                        </div>
-                    </div>
-                </div>
+                
 
                 <table class="table table-striped table-hover text-center">
                     <tbody>
@@ -145,10 +121,6 @@
 
                             <td>
                                 <input class="mt-2" type="checkbox" name="" {{ $task->completed ? "checked" : ""  }} onchange="changestatus('{{$task->id}}')" class="float-left" value="{{ $task->completed }}" id="">
-                            </td>
-
-                            <td>
-                                <button class="btn btn-info text-white btn-sm" data-task-id="{{$task->id}}" data-task-name="{{$task->name}}" data-toggle="modal" data-target="#taskModal"><i class="fas fa-pencil-alt"></i></button>
                             </td>
 
                             <td>
@@ -175,15 +147,6 @@
 <script src="{{ (asset('vendor/laravelTodoList/js/axios/axios.min.js')) }}"></script>
 
 <script>
-    var url = "{{ route('tasks.update')}}"
-    $("#taskModal").on('show.bs.modal', function(event){
-        var btn = event.relatedTarget;
-        var id = $(btn).data('task-id');
-        var taskName = $(btn).data('task-name');
-        $("#taskName").val(taskName);
-
-        $("#task-up").attr('action', url+'/'+id)
-    })
     
 function changestatus(task_id)
 {
@@ -198,6 +161,7 @@ function changestatus(task_id)
         console.log(error.response.data);
     })
 }
+
     var url = "{{ route('categories.update')}}"
     $("#categoriesModal").on('show.bs.modal', function(event){
         var btn = event.relatedTarget;
