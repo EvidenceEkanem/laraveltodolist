@@ -154,7 +154,7 @@
 @endsection
 
 @section('script')
-<script src="{{ (URL::to('vendor/laravelTodoList/js/axios/axios.min.js')) }}"></script>
+<script src="{{ (asset('vendor/laravelTodoList/js/axios/axios.min.js')) }}"></script>
 
 <script>
     
