@@ -155,7 +155,11 @@
 @endsection
 
 @section('script')
+<<<<<<< HEAD
 <script src="js/axios/axios.min.js"></script>
+=======
+<script src="vendor/laravelTodoList/js/axios/axios.min.js"></script>
+>>>>>>> 63856cf281522b73850e53cb198e8c8e2a1f6fcf
 
 <script>
     
