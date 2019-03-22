@@ -1,6 +1,6 @@
 {
     "name": "evidenceekanem/laraveltodolist",
-    "description": "This is a Laravel package that handles your todo list",
+    "description": "laraveltodolist is a laravel package that adds a todo list management system to an application.",
     "license": "MIT",
     "authors": [
         {

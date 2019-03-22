@@ -5,12 +5,13 @@
 		<div class="row">
 			<div class="col-md-5 mb-3">
 				<div class="card border-0">
-                    <div class="card-header">Card Categories</div>
+                    <div class="card-header">Task Categories</div>
 					<div class="card-body">
 						<div class="card-text">
 
 							<form action="{{ route('categories.store') }}" method="post">
                             {{ csrf_field() }}
+                            
 								<div class="input-group mb-3">
 									<input type="text" required name="categories" class="form-control" placeholder="New Category">
 									<div class="input-group-append">
@@ -86,7 +87,7 @@
 			<div class="col-md-7">
 				<div class="card border-0">
                     <div class="card-header">
-                        <div>{{ $current_cat  ? " {$current_cat->categories} " : "Task" }}</div>
+                        <div>{{ $current_cat  ? " Task for {$current_cat->categories} " : "Task" }}</div>
                     </div>
 					<div class="card-body">
                         <div class="card-text">
@@ -154,7 +155,7 @@
 @endsection
 
 @section('script')
-<script src="{{ (URL::to('vendor/laravelTodoList/js/axios/axios.min.js')) }}"></script>
+<script src="js/axios/axios.min.js"></script>
 
 <script>
     

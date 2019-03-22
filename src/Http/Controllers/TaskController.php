@@ -20,8 +20,6 @@ class TaskController extends Controller
         return view('laraveltodolist::tasks', ['categories' => $categories, 'tasks' => $tasksForCurrentCat ?? null, 'current_cat' => $currentCat ?? null]);
     }
 
-   
-
     public function addTask(Request $request)
     {
         $tasks = new Task;
@@ -38,7 +36,7 @@ class TaskController extends Controller
         $categories->categories = $request->categories;
         $categories->save();
 
-        return back();
+        return redirect('tasks');
     }
    
     public function updateCategories(Request $request, $id)
@@ -48,7 +46,7 @@ class TaskController extends Controller
         
         $categories->save();
 
-        return back();
+        return redirect('tasks');
     }
 
     public function updateTask(Request $request, $id)
@@ -75,7 +73,7 @@ class TaskController extends Controller
         $categories = Category::find($id);
         $categories->delete();
         
-        return back();
+        return redirect('tasks');
     }
 
     public function updateTaskStatus(Request $request)

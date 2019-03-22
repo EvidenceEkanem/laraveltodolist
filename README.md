@@ -5,7 +5,7 @@
 [![Build Status][ico-travis]][link-travis]
 [![StyleCI][ico-styleci]][link-styleci]
 
-This is a Laravel package that handles your todo list.
+laraveltodolist is a laravel package that adds a todo list management system to an application.
 
 ## Installation
 
