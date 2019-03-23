@@ -46,7 +46,7 @@ class TaskController extends Controller
 
         Alert::success('Category successfully added!')->persistent("OK");
 
-        return redirect('tasks');
+        return back();
     }
    
     public function updateCategories(Request $request, $id)
