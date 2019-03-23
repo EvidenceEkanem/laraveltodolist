@@ -2,13 +2,15 @@
 
 @section('content')
 <div class="container">
-		<div class="row">
+    
+        <div class="row">
 			<div class="col-md-5 mb-3">
+                   
 				<div class="card border-0">
                     <div class="card-header">Task Categories</div>
 					<div class="card-body">
 						<div class="card-text">
-
+                                
 							<form action="{{ route('categories.store') }}" method="post">
                             {{ csrf_field() }}
                             
@@ -19,7 +21,28 @@
 									</div>
 								</div>
                             </form>
-
+                        @if (session('message'))
+                            <div class="alert alert-info alert-dismissible fade show">
+                                {{ session('message') }}
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                        @elseif (session('status'))
+                            <div class="alert alert-info alert-dismissible fade show">
+                                {{ session('status') }}
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                        @elseif (session('delete'))
+                            <div class="alert alert-info alert-dismissible fade show">
+                                {{ session('delete') }}
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                        @endif        
                     <div class="modal fade" id="categoriesModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
@@ -47,6 +70,8 @@
                         </form>
                             </div>
                         </div>
+
+                       
                     </div>
 
 							<table class="table table-striped table-hover">
@@ -116,7 +141,21 @@
                         </div>
                         
                 
-
+                    @if (session('status'))
+                        <div class="alert alert-info alert-dismissible fade show">
+                            {{ session('status') }}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    @elseif (session('deleteTask'))
+                        <div class="alert alert-info alert-dismissible fade show">
+                            {{ session('deleteTask') }}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    @endif
                 <table class="table table-striped table-hover text-center">
                     <tbody>
                         @foreach($tasks as $task)
@@ -151,7 +190,7 @@
         @endif
 		</div>
     </div>
-    
+   
 @endsection
 
 @section('script')

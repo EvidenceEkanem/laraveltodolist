@@ -9,6 +9,10 @@ use evidenceekanem\laravelTodoList\Models\Category;
 
 class TaskController extends Controller
 {
+    function __construct() {
+        return $this->middleware('web');
+    }
+
     public function index(Request $request)
     {
         $categories = Category::all();
@@ -27,16 +31,17 @@ class TaskController extends Controller
         $tasks->category_id = $request->category_id;
         $tasks->save();
         
-        return back();
+        return back()->with('taskMessage', "Task successfully created");
     }
 
     public function addCategory(Request $request)
     {
         $categories = new Category;
         $categories->categories = $request->categories;
+        
         $categories->save();
 
-        return redirect('tasks');
+        return redirect('tasks')->with('message', "category successfully created");
     }
    
     public function updateCategories(Request $request, $id)
@@ -46,26 +51,15 @@ class TaskController extends Controller
         
         $categories->save();
 
-        return redirect('tasks');
+        return redirect('tasks')->with('status', 'Category successfully updated');
     }
-
-    public function updateTask(Request $request, $id)
-    {
-        // dd($request->post());
-        $tasks = Task::find($id);
-        $tasks->name = $request->tasks;
-        $tasks->save();
-
-        return back();
-    }
-
 
     public function deleteTask($id)
     {
         $tasks = Task::Find($id);
         $tasks->delete();
         
-        return back();
+        return back()->with('deleteTask', 'Task successfully deleted');
     }
 
     public function deleteCategory($id)
@@ -73,7 +67,7 @@ class TaskController extends Controller
         $categories = Category::find($id);
         $categories->delete();
         
-        return redirect('tasks');
+        return back()->with('delete', 'Category successfully deleted');
     }
 
     public function updateTaskStatus(Request $request)
