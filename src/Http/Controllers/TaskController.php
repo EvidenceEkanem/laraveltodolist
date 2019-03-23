@@ -31,6 +31,8 @@ class TaskController extends Controller
         $tasks->name = $request->name;
         $tasks->category_id = $request->category_id;
         $tasks->save();
+
+        Alert::success('Task successfully added!')->persistent("OK");
         
         return back();
     }
@@ -42,7 +44,7 @@ class TaskController extends Controller
         
         $categories->save();
 
-        Alert::success('Category added successfully')->autoclose(3500);
+        Alert::success('Category successfully added!')->persistent("OK");
 
         return redirect('tasks');
     }
@@ -54,6 +56,8 @@ class TaskController extends Controller
         
         $categories->save();
 
+        Alert::success('Category successfully updated!')->persistent("OK");
+
         return back();
     }
 
@@ -61,6 +65,8 @@ class TaskController extends Controller
     {
         $tasks = Task::Find($id);
         $tasks->delete();
+
+        Alert::success('Task successfully deleted!')->persistent("OK");
         
         return back();
     }
@@ -69,6 +75,8 @@ class TaskController extends Controller
     {
         $categories = Category::find($id);
         $categories->delete();
+
+        Alert::success('Category successfully deleted!')->persistent("OK");
         
         return back();
     }
