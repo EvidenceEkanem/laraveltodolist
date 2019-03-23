@@ -2,6 +2,7 @@
 
 namespace evidenceekanem\laravelTodoList\Controllers;
 
+use Alert;
 use Illuminate\Http\Request;
 use evidenceekanem\laravelTodoList\Controllers\Controller;
 use evidenceekanem\laravelTodoList\Models\Task;
