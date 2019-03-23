@@ -20,29 +20,7 @@
                                     <button type="submit" class="btn btn-info text-white"><i class="fas fa-plus mr-1"></i>Add Category</button>
 									</div>
 								</div>
-                            </form>
-                        @if (session('message'))
-                            <div class="alert alert-info alert-dismissible fade show">
-                                {{ session('message') }}
-                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                        @elseif (session('status'))
-                            <div class="alert alert-info alert-dismissible fade show">
-                                {{ session('status') }}
-                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                        @elseif (session('delete'))
-                            <div class="alert alert-info alert-dismissible fade show">
-                                {{ session('delete') }}
-                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                        @endif        
+                            </form>       
                     <div class="modal fade" id="categoriesModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
@@ -140,22 +118,6 @@
 							</form>
                         </div>
                         
-                
-                    @if (session('status'))
-                        <div class="alert alert-info alert-dismissible fade show">
-                            {{ session('status') }}
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                    @elseif (session('deleteTask'))
-                        <div class="alert alert-info alert-dismissible fade show">
-                            {{ session('deleteTask') }}
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                    @endif
                 <table class="table table-striped table-hover text-center">
                     <tbody>
                         @foreach($tasks as $task)

@@ -31,7 +31,7 @@ class TaskController extends Controller
         $tasks->category_id = $request->category_id;
         $tasks->save();
         
-        return back()->with('taskMessage', "Task successfully created");
+        return back();
     }
 
     public function addCategory(Request $request)
@@ -41,7 +41,7 @@ class TaskController extends Controller
         
         $categories->save();
 
-        return redirect('tasks')->with('message', "category successfully created");
+        return redirect('tasks');
     }
    
     public function updateCategories(Request $request, $id)
@@ -51,7 +51,7 @@ class TaskController extends Controller
         
         $categories->save();
 
-        return redirect('tasks')->with('status', 'Category successfully updated');
+        return back();
     }
 
     public function deleteTask($id)
@@ -59,7 +59,7 @@ class TaskController extends Controller
         $tasks = Task::Find($id);
         $tasks->delete();
         
-        return back()->with('deleteTask', 'Task successfully deleted');
+        return back();
     }
 
     public function deleteCategory($id)
@@ -67,7 +67,7 @@ class TaskController extends Controller
         $categories = Category::find($id);
         $categories->delete();
         
-        return back()->with('delete', 'Category successfully deleted');
+        return back();
     }
 
     public function updateTaskStatus(Request $request)
