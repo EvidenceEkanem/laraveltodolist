@@ -42,7 +42,7 @@ class TaskController extends Controller
         
         $categories->save();
 
-        Alert::success('task added successfully');
+        Alert::success('Category added successfully')->autoclose(3500);
 
         return redirect('tasks');
     }
