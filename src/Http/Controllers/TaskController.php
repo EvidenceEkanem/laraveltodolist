@@ -41,6 +41,8 @@ class TaskController extends Controller
         
         $categories->save();
 
+        Alert::success('task added successfully');
+
         return redirect('tasks');
     }
    
