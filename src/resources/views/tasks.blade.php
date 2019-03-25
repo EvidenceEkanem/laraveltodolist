@@ -139,7 +139,7 @@
                                 <form class="ml-3 d-inline" id="delete-task" action="{{ route('tasks.delete', [$task->id])}}" method="post">
                                     @method('delete')
                                     @csrf
-                                    <button type="submit" onclick="confirmTaskDelete('delete-task')" class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i></button>
+                                    <button type="button" onclick="confirmTaskDelete('delete-task')" class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i></button>
                                 </form>
                             </td>
                         </tr>
