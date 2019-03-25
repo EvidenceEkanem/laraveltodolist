@@ -73,10 +73,10 @@
                                                 <button class="btn btn-info text-white btn-sm" data-categories-id="{{$category->id}}" data-categories-category="{{$category->categories}}" data-toggle="modal" data-target="#categoriesModal"><i class="fas fa-pencil-alt"></i></button>
                                             </td>
                                             <td class="float-right">
-                                                <form class="ml-3 d-inline" action="{{ route('categories.delete', [$category->id])}}" method="post">
+                                                <form id="delete-category" class="ml-3 d-inline" action="{{ route('categories.delete', [$category->id])}}" method="post">
                                                     @method('delete')
                                                     @csrf
-                                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i></button>
+                                                    <button type="button" onclick="confirmDelete('delete-category')" class="btn btn-danger btn-sm" ><i class="fas fa-trash-alt"></i></button>
                                                 </form>
                                             </td>
                                         </tr>
@@ -136,10 +136,10 @@
                             </td>
 
                             <td>
-                                <form class="ml-3 d-inline" action="{{ route('tasks.delete', [$task->id])}}" method="post">
+                                <form class="ml-3 d-inline" id="delete-task" action="{{ route('tasks.delete', [$task->id])}}" method="post">
                                     @method('delete')
                                     @csrf
-                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i></button>
+                                    <button type="submit" onclick="confirmTaskDelete('delete-task')" class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i></button>
                                 </form>
                             </td>
                         </tr>
@@ -184,5 +184,46 @@ function changestatus(task_id)
         $("#categories-update").attr('action', url+'/'+id)
     })
 
+    function confirmDelete(item_id) {
+            swal({
+                title: "Are you sure?",
+                text: "Once deleted, you will not be able to recover the category!",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            })
+                .then((willDelete) => {
+                    if (willDelete) {
+                        $('#'+item_id).submit();
+                    } else {
+                        swal({
+                            text: "Cancelled Successfully!",
+                            icon: "info",
+                        });
+                    }
+                });
+        }
+
+        
+
+        function confirmTaskDelete(task_id) {
+            swal({
+                title: "Are you sure?",
+                text: "Once deleted, you will not be able to recover the Task!",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            })
+                .then((willDelete) => {
+                    if (willDelete) {
+                        $('#'+task_id).submit();
+                    } else {
+                        swal({
+                            text: "Cancelled Successfully!",
+                            icon: "info",
+                        });
+                    }
+                });
+        }
 </script>
 @endsection
