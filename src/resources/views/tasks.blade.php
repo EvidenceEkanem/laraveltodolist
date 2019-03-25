@@ -15,7 +15,7 @@
                             {{ csrf_field() }}
                             
 								<div class="input-group mb-3">
-									<input type="text" pattern="[A-Za-z]" required name="categories" class="form-control" placeholder="New Category">
+									<input type="text" required name="categories" class="form-control" placeholder="New Category">
 									<div class="input-group-append">
                                     <button type="submit" class="btn btn-info text-white"><i class="fas fa-plus mr-1"></i>Add Category</button>
 									</div>
@@ -37,7 +37,7 @@
                                     @method('put')
                                     <div class="form-group">
                                     <label for="description">Categories</label>
-                                    <input type="text" pattern="[A-Za-z]" required value="" class="form-control" name="categories" id="category">
+                                    <input type="text" required value="" class="form-control" name="categories" id="category">
                                 </div>
                             </div>
 
@@ -109,7 +109,7 @@
                             <form action="{{ route('tasks.store') }}" method="post">
                                 @csrf
 								<div class="input-group mb-3">
-                                    <input type="text" pattern="[A-Za-z]" required name="name" class="form-control" placeholder="New task">
+                                    <input type="text" required name="name" class="form-control" placeholder="New task">
                                     <input type="hidden" name="category_id" value="{{ $current_cat->id ?? null }}">
 									<div class="input-group-append">
 										<button class="btn btn-danger" type="submit"><i class="fas fa-plus mr-1"></i>Add Task</button>
